@@ -85,44 +85,46 @@ def second():
 # # мышь – mouse
 # # собака – dog
 # # Обратите	внимание, что строки в выходном файле нужно отсортировать по алфавиту!
-from googletrans import Translator
-name = "10lab_en-ru.txt"
-translations_dict = {}
-with open(name, "r", encoding="utf-8") as file:
-        lines = file.readlines()
-        for line in lines:
-                russian_word, english_word = line.strip().split(" – ")
-                translations_dict[russian_word] = english_word
+def translate():
+    from googletrans import Translator
+    name = "10lab_en-ru.txt"
+    translations_dict = {}
+    with open(name, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+            for line in lines:
+                    russian_word, english_word = line.strip().split(" – ")
+                    translations_dict[russian_word] = english_word
 
-sorted_translations = {}
-for [russian_word, english_word] in translations_dict.items():
-    sorted_translations[russian_word] = ", ".join(english_word.split(", "))
+    sorted_translations = {}
+    for [russian_word, english_word] in translations_dict.items():
+        sorted_translations[russian_word] = ", ".join(english_word.split(", "))
 
-with open("10lab_en-ru_sorted.txt", "w", encoding="utf-8") as file:
-        for russian_word, english_word in (sorted_translations.items()):
-                file.write(f"{english_word} - {russian_word}\n")
-        ask1 = input("вы хотите добавить элемент к словарю? ").upper()
-        if (ask1 == "ДА") or (ask1 == "YES") or (ask1 == "LF"):
-                def newwords():
-                        ask2 = input(
-                                "введите 'ENG' если хотите произвести перевод с английского на русский.\nвведите 'RUS' если хотите произвести перевод с русского на английский\n").upper()
-                        if ask2 == "ENG":
-                                text = (input("какое слово вы хотите перевести(ВЫБРАНО АНГЛ-РУ) "))
-                                translator = Translator()
-                                result = (translator.translate(text, dest='ru').text)
-                                file.write(f"{result} - {text}\n")
-                        if ask2 == "RUS":
-                                text = (input("какое слово вы хотите перевести(ВЫБРАНО РУ-АНГЛ) "))
-                                translator = Translator()
-                                result = (translator.translate(text, dest='en').text)
-                                file.write(f"{text} - {result}\n")
-                        ask3 = input("хотите перевести ещё одно слово? ").upper()
-                        if (ask3 == "ДА") or (ask3 == "YES") or (ask3 == "LF"):
-                                newwords()
-                newwords()
-with open("en-ru_sorted.txt", "r", encoding="utf-8") as file:
-        lines = file.readlines()
-        lines.sort()
-with open("en-ru_sorted.txt", "w", encoding="utf-8") as file:
-        for line in lines:
-                file.write(line)
+    with open("10lab_en-ru_sorted.txt", "w", encoding="utf-8") as file:
+            for russian_word, english_word in (sorted_translations.items()):
+                    file.write(f"{english_word} - {russian_word}\n")
+            ask1 = input("вы хотите добавить элемент к словарю? ").upper()
+            if (ask1 == "ДА") or (ask1 == "YES") or (ask1 == "LF"):
+                    def newwords():
+                            ask2 = input(
+                                    "введите 'ENG' если хотите произвести перевод с английского на русский.\nвведите 'RUS' если хотите произвести перевод с русского на английский\n").upper()
+                            if ask2 == "ENG":
+                                    text = (input("какое слово вы хотите перевести(ВЫБРАНО АНГЛ-РУ) "))
+                                    translator = Translator()
+                                    result = (translator.translate(text, dest='ru').text)
+                                    file.write(f"{result} - {text}\n")
+                            if ask2 == "RUS":
+                                    text = (input("какое слово вы хотите перевести(ВЫБРАНО РУ-АНГЛ) "))
+                                    translator = Translator()
+                                    result = (translator.translate(text, dest='en').text)
+                                    file.write(f"{text} - {result}\n")
+                            ask3 = input("хотите перевести ещё одно слово? ").upper()
+                            if (ask3 == "ДА") or (ask3 == "YES") or (ask3 == "LF"):
+                                    newwords()
+                    newwords()
+    with open("10lab_en-ru_sorted.txt", "r", encoding="utf-8") as file:
+            lines = file.readlines()
+            lines.sort()
+    with open("10lab_en-ru_sorted.txt", "w", encoding="utf-8") as file:
+            for line in lines:
+                    file.write(line)
+second()
