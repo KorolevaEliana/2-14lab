@@ -127,4 +127,4 @@ def translate():
     with open("10lab_en-ru_sorted.txt", "w", encoding="utf-8") as file:
             for line in lines:
                     file.write(line)
-second()
+translate(), first(), second()
