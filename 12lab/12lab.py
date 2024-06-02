@@ -66,24 +66,24 @@ def third():
             if flavor in self.flavors:
                 self.flavors.remove(flavor)
             else:
-                print(f"сорт мороженого '{flavor}' есть в наличии")
+                print(f"сорт мороженого '{flavor}': есть в наличии")
         def remove_type(self, type_icecream):
             if type_icecream in self.type_icecream:
                 self.type_icecream.remove(type_icecream)
             else:
-                print(f"тип мороженого '{flavor}' нет в наличии")
+                print(f"тип мороженого '{type_icecream}': нет в наличии")
 
 
         def check_flavor(self, flavor):
             if flavor in self.flavors:
-                print(f"сорт мороженого '{flavor}' есть в наличии")
+                print(f"сорт мороженого '{flavor}': есть в наличии")
             else:
-                print(f"сорт мороженого '{flavor}' нет в наличии")
+                print(f"сорт мороженого '{flavor}': нет в наличии")
         def check_type(self, type_icecream):
             if type_icecream in self.type_icecream:
                 print(f"тип мороженого '{type_icecream}' есть в наличии")
             else:
-                print(f"сорт мороженого '{type_icecream}' нет в наличии")
+                print(f"тип мороженого '{type_icecream}': нет в наличии")
 
     newflavors = IceCreamStand("круто", ["клубничное", "шоколадное", "ванильное", "вкусное"], ["фруктовый лёд", "щербет", "на палочке", "жареное"], "мороженщица", 5, "ул. некрасова 6", "9:00-23:00")
     print(newflavors.describe_restaurant())
