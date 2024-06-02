@@ -43,25 +43,27 @@ def second():
 
 #11.3)	Добавьте в созданный класс Restaurant атрибут, задающий начальный рейтинг ресторана и метод,
 # который получает на вход новое значение рейтинга и обновляет его.
-import random
-class restaurant:
-    def __init__(self, restaurant_name, cuisine_type, restaurant_rating):
-        restaurant_rating = 0
-        self.restaurant_rating = restaurant_rating
-        self.restuarant_name = restaurant_name
-        self.cuisine_type = cuisine_type
-    def open_restaurant(self):
-        return f"ресторан '{self.restuarant_name}' '{self.cuisine_type}' кухня с рейтингом '{self.restaurant_rating}' открылся"
-    def describe_restaurant(self):
-        description = f"ресторан '{self.restuarant_name}' кухня '{self.cuisine_type}' рейтинг '{self.restaurant_rating}"
-        return description
-    def rate_restaurant(self, updrate):
-        self.restaurant_rating = updrate
-        return f'рейтинг обновлен: {updrate}'
+def third():
+    import random
+    class restaurant:
+        def __init__(self, restaurant_name, cuisine_type, restaurant_rating):
+            restaurant_rating = 0
+            self.restaurant_rating = restaurant_rating
+            self.restuarant_name = restaurant_name
+            self.cuisine_type = cuisine_type
+        def open_restaurant(self):
+            return f"ресторан '{self.restuarant_name}' '{self.cuisine_type}' кухня с рейтингом '{self.restaurant_rating}' открылся"
+        def describe_restaurant(self):
+            description = f"ресторан '{self.restuarant_name}' кухня '{self.cuisine_type}' рейтинг '{self.restaurant_rating}"
+            return description
+        def rate_restaurant(self, updrate):
+            self.restaurant_rating = updrate
+            return f'рейтинг обновлен: {updrate}'
 
-newRestaurant = restaurant("круто", "китайская", 56)
-print(newRestaurant.describe_restaurant())
-updrate = random.randint(1, 5)
-message = newRestaurant.rate_restaurant(updrate)
-print(message)
-print(newRestaurant.describe_restaurant())
+    newRestaurant = restaurant("круто", "китайская", 56)
+    print(newRestaurant.describe_restaurant())
+    updrate = random.randint(1, 5)
+    message = newRestaurant.rate_restaurant(updrate)
+    print(message)
+    print(newRestaurant.describe_restaurant())
+first(), second(), third()
