@@ -5,7 +5,16 @@ def fffff():
     import re
     import secrets
     import string
-    ch = 0
+    import sys
+    def passwordgeneration():
+        check = input("vi hotite sgenerirovat novi paryol? ").upper()
+        if (check == "YES" or check == "DA" or check == "ДА" or check == "LF"):
+            symb = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
+            passworduser = (''.join(secrets.choice(symb) for i in range(16)))
+            print(passworduser)
+            sys.exit("paryol prinyat")
+        else:
+            sys.exit("poprobyite eshe")
     strong = r'(?=(.*[a-z]))(?=(.*[A-Z]))(?=(.*[0-9]))(?=(.*[!@#$%^&*()\-__+.])).{8,}'
     passworduser = input("vvedite paryol: ")
     match = re.search(strong, passworduser)
@@ -13,33 +22,20 @@ def fffff():
         print("paryol normalnyi")
     else:
         print("paryol dolzhen soderzhat zaglavniye i strochniye bykvi, cifry, specialniye symvoly")
-        ch = 1
-    if ch == 0:
-        passworduser2 = input("povtoritye paryol: ")
-        if passworduser != passworduser2:
-            print("paryol ne prinyat")
-            exit()
-#проверка слили ли пароль (можно убрать?), passpwnedcheck библиотека
-    if ch == 0:
-        from passpwnedcheck.pass_checker import PassChecker
-        pass_checker = PassChecker()
-        password = passworduser
-        is_leaked, count = pass_checker.is_password_compromised(password)
-        if is_leaked:
-            print(f'vash paryol byl slit {count} raz')
-            ch = 1
-        else:
-            print('vash paryol pryniat')
-#генерация
-    if ch == 1:
-        check = input("vi hotite sgenerirovat novi paryol? ").upper()
-        if (check == "YES" or check == "DA" or check == "ДА" or check == "LF"):
-            symb = string.ascii_lowercase + string.ascii_uppercase + string.digits + string.punctuation
-            print(''.join(secrets.choice(symb) for i in range(16)))
-        else:
-            exit()
-
-
+        passwordgeneration()
+    passworduser2 = input("povtoritye paryol: ")
+    if passworduser != passworduser2:
+        print("paryol ne prinyat")
+        passwordgeneration()
+    from passpwnedcheck.pass_checker import PassChecker
+    pass_checker = PassChecker()
+    password = passworduser
+    is_leaked, count = pass_checker.is_password_compromised(password)
+    if is_leaked:
+        print(f'vash paryol byl slit {count} raz')
+        passwordgeneration()
+    else:
+        print('vash paryol pryniat')
 #2.2) Напишите программу, которая определяет, какой тип места в плацкартном вагоне (верхнее или нижнее, в плацкарте или боковое) по заданному номеру места.
 def twtwtw():
     import random
@@ -49,8 +45,6 @@ def twtwtw():
         print("seat num:", s, pl, "res: bokovoye sidenye")
     else:
         print("seat num:", s, pl, "res: placart")
-
-
 #2.3) Год является високосным, если его номер кратен 4, но не кратен 100, или если он кратен 400.
 #Напишите функцию, которая определяет, является ли год с данным номером високосным.
 # Если год является високосным, то выведите «Год ... - високосный», где вместо многоточия выведите год, иначе выведите «Это год не високосный».
@@ -60,8 +54,6 @@ def ththth():
         print("visokocny")
     else:
         print("ne visokosny")
-
-
 # Красный, синий и желтый называются основными цветами, потому что их нельзя получить путем смешения других цветов.
 # При смешивании двух основных цветов получается вторичный цвет:
 # - если смешать красный и синий, то получится фиолетовый;
